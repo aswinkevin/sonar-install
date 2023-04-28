@@ -37,7 +37,9 @@ su - postgres -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonar;
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.0.0.68432.zip
 unzip sonarqube-10.0.0.68432.zip
 rm sonarqube-10.0.0.68432.zip
-mv sonarqube-10.0.0.68432 /opt/sonarqube
+mkdir /opt/sonarqube
+mv sonarqube-10.0.0.68432/* /opt/sonarqube/
+rm sonarqube-10.0.0.68432
 
 # Configure SonarQube to use PostgreSQL
 cp /opt/sonarqube/conf/sonar.properties /opt/sonarqube/conf/sonar.properties.bak
