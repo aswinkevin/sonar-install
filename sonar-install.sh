@@ -39,7 +39,7 @@ unzip sonarqube-10.0.0.68432.zip
 rm sonarqube-10.0.0.68432.zip
 mkdir /opt/sonarqube
 mv sonarqube-10.0.0.68432/* /opt/sonarqube/
-rm sonarqube-10.0.0.68432
+rm -rf sonarqube-10.0.0.68432
 
 # Configure SonarQube to use PostgreSQL
 cp /opt/sonarqube/conf/sonar.properties /opt/sonarqube/conf/sonar.properties.bak
