@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Modifying the systemfile
+echo "vm.max_map_count=262144" | tee -a /etc/sysctl.conf
+echo "fs.file-max=65536" | tee -a /etc/sysctl.conf
+echo "ulimit -n 65536" | tee -a /etc/sysctl.conf
+echo "ulimit -u 4096" | tee -a /etc/sysctl.conf
+
 apk add --no-cache openjdk17 procps
 
 # Install PostgreSQL
@@ -48,4 +54,3 @@ sed -i 's|#sonar.jdbc.password=|sonar.jdbc.password=your_password|' /opt/sonarqu
 addgroup sonar
 adduser -h /opt/sonarqube -G sonar -D sonar
 chown sonar:sonar /opt/sonarqube -R
-su - sonar -c '/opt/sonarqube/bin/linux-x86-64/sonar.sh console'
